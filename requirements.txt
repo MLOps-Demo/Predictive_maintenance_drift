@@ -1,0 +1,17 @@
+pandas
+numpy
+nltk
+scikit-learn==0.24.2
+collection
+matplotlib
+dvc
+dvc[gdrive]
+pyyaml
+plotly
+seaborn
+xgboost
+imblearn
+hyperopt
+evidently
+alibi_detect
+lightgbm

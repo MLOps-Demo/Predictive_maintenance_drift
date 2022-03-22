@@ -1,0 +1,4 @@
+outs:
+- md5: 3e6cab8ef847cc7617c7e0aa14059757
+  size: 531014
+  path: predictive_maintenance.csv
