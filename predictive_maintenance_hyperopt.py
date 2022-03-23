@@ -179,6 +179,6 @@ plt.xlabel('False Positive Rate')
 #plt.show()
 plt.savefig('auc.png')
 
-import pickle
-with open("Predictive_maintenance_pkl","wb") as files:
-    pickle.dump(xgb_clf,files)
+#import pickle
+#with open("Predictive_maintenance_pkl","wb") as files:
+ #   pickle.dump(xgb_clf,files)

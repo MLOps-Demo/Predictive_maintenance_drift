@@ -1,0 +1,51 @@
+name: Training
+
+on: [push]
+
+jobs:
+  run:
+    runs-on: [ubuntu-latest]
+  
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: iterative/setup-cml@v1
+
+      - uses: iterative/setup-dvc@v1
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.7'
+
+      - name: cml
+        env:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS }}
+        run: |
+          pip install -r requirements.txt
+          
+          # Pull latest data from remote
+          dvc pull
+
+          
+          # Reproduce pipeline if any changes detected in dependencies
+          dvc repro 
+          
+          git fetch --prune --unshallow
+          # Add figure to the report
+          echo "## Validating results by region"
+          dvc plots show
+          
+          
+          
+          
+          cml-publish Machine_type.png --md >> report.md
+          cml-publish machine_histogram.png --md >> report.md
+          cml-publish Confusion_matrix.png --md >> report.md
+          cml-publish auc.png --md >> report.md
+          cml-publish failures.png --md >> report.md
+          cml-publish historical_data_type.png --md >> report.md
+          cml-publish historical_drift.png --md >> report.md
+          
+          dvc metrics diff --show-md master >> report.md
+          cml-send-comment report.md

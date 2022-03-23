@@ -1,0 +1,49 @@
+stages:
+  
+  Training:
+    cmd: python predictive_maintenance_hyperopt.py
+    
+    deps:
+      - predictive_maintenance_hyperopt.py
+      - Data/predictive_maintenance.csv
+    
+    
+  Testing:
+    cmd: python predictive_maintenance_drift.py
+    
+    deps:
+        - predictive_maintenance_drift.py
+        - Data/predictive_maintenance.csv
+    
+    
+    metrics:   
+
+      - Output/accuracy.json:
+          cache: false
+
+  
+
+
+
+    plots:    
+
+      - machine_histogram.png:
+          cache: false
+
+      - Machine_type.png:
+          cache: false
+          
+      - Confusion_matrix.png:
+          cache: false
+          
+      - auc.png:
+          cache: false
+
+      - failures.png:
+          cache: false
+          
+      - historical_data_type.png:
+          cache: false
+          
+      - historical_drift.png:
+          cache: false

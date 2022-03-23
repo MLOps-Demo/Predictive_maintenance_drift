@@ -1,0 +1,4 @@
+[core]
+    remote = hyperdrift
+['remote "hyperdrift"']
+    url = gdrive://1QUcyqTxPyDzkPDYOC1fuScyT09NvLQMK

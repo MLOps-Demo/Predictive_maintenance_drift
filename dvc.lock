@@ -1,0 +1,11 @@
+schema: '2.0'
+stages:
+  Training:
+    cmd: python predictive_maintenance_hyperopt.py
+    deps:
+    - path: Data/predictive_maintenance.csv
+      md5: 3e6cab8ef847cc7617c7e0aa14059757
+      size: 531014
+    - path: predictive_maintenance_hyperopt.py
+      md5: 187f1a927c624dbeb2cb5e22fdcaf094
+      size: 6287
