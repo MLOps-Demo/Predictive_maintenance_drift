@@ -11,8 +11,8 @@ stages:
 
       - Output/accuracy.json:
           cache: false
-
-	  plots:    
+    
+    plots:    
 
       - machine_histogram.png:
           cache: false
@@ -25,7 +25,7 @@ stages:
           
       - auc.png:
           cache: false
-
+    
   Testing:
     cmd: python predictive_maintenance_drift.py
     
@@ -33,9 +33,9 @@ stages:
         - predictive_maintenance_drift.py
         - Data/predictive_maintenance.csv
     
-    
-    plots:    
-	
+  
+    plots:
+
       - failures.png:
           cache: false
           
